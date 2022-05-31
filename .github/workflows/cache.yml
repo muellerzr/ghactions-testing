@@ -32,7 +32,7 @@ jobs:
         key: pip-${{ steps.setup_python.outputs.python-version }}-${{ hashFiles('setup.py') }}
       
     - name: Create venv
-      if: steps.python_cache.outputs.cache-hit != "true"
+      if: steps.python_cache.outputs.cache-hit != 'true'
       run: |
         if [ -d "venv" ]; then rm -rf venv; fi
 
