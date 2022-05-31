@@ -19,10 +19,23 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python v3
+      id: setup_python
       uses: actions/setup-python@v3
       with:
-        cache: 'pip'
-        cache-dependency-path: "setup.py"
         python-version: 3.7
-    - name: Install accelerate
-      run: pip install .[test,test_trackers]
+
+    - name: Activate python cache
+      id: python_cache
+      uses: actions/cache@v3
+      with:
+        path: venv
+        key: pip-${{ steps.setup_python.outputs.python-version }}-${{ hashFiles("requirements.txt") }}
+
+    - if: steps.python_cache.outputs.cache-hit != "true"
+      run: |
+        if [ -d "venv" ]; then rm -rf venv; fi
+
+        # Recreate
+        python3 -m venv venv
+
+        venv/bin/python3 -m pip install -e .[test,test_trackers]
