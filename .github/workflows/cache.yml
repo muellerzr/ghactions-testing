@@ -12,7 +12,7 @@ jobs:
       with:
         python-version: 3.7
     - name: Install accelerate
-      run: pip install accelerate
+      run: pip install -e .[test,test_trackers]
 
   with-pip-cache:
     runs-on: ubuntu-latest
@@ -25,4 +25,4 @@ jobs:
         cache-dependency-path: "setup.py"
         python-version: 3.7
     - name: Install accelerate
-      run: pip install accelerate
+      run: pip install -e .[test,test_trackers]
