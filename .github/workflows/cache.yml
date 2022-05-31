@@ -30,8 +30,9 @@ jobs:
       with:
         path: venv
         key: pip-${{ steps.setup_python.outputs.python-version }}-${{ hashFiles('setup.py') }}
-
-    - if: steps.python_cache.outputs.cache-hit != "true"
+      
+    - name: Create venv
+      if: steps.python_cache.outputs.cache-hit != "true"
       run: |
         if [ -d "venv" ]; then rm -rf venv; fi
 
