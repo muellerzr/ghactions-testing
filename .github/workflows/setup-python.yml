@@ -33,5 +33,6 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: 3.7
+        cache: 'pip'
     - name: Echo pypi version
       run: echo $(pip --version)

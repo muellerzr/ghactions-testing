@@ -1,0 +1,27 @@
+name: Time setup python
+
+on: [workflow_dispatch]
+
+jobs:
+  without-pip-cache:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python v3
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.7
+    - name: Install accelerate
+      run: pip install accelerate
+
+  with-pip-cache:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python v3
+      uses: actions/setup-python@v3
+      with:
+        cache: 'pip'
+        python-version: 3.7
+    - name: Install accelerate
+      run: pip install accelerate
