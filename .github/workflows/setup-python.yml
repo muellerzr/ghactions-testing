@@ -12,7 +12,7 @@ jobs:
       with:
         python-version: 3.7
     - name: Echo pypi version
-      run: echo ${pip --version}
+      run: echo $(pip --version)
 
   actions-v3:
     runs-on: ubuntu-latest
@@ -23,4 +23,4 @@ jobs:
       with:
         python-version: 3.7
     - name: Echo pypi version
-      run: echo ${pip --version}
+      run: echo $(pip --version)
