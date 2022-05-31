@@ -1,0 +1,26 @@
+name: Time setup python
+
+on: [workflow_dispatch]
+
+jobs:
+  actions-v2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python v2
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Echo pypi version
+      run: echo ${pip --version}
+
+  actions-v3:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python v3
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.7
+    - name: Echo pypi version
+      run: echo ${pip --version}
